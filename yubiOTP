@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+
+import random
+
+def genYubiOTP():
+    otp = ""
+    with open('words.cy', 'r') as f:
+        for word in f:
+            welshWord = word.strip()
+            if len(welshWord) > 10:
+                otp = otp + "".join(random.sample(welshWord,4))
+
+    if len(otp) > 44:
+        finalOTP = 'ccccc' + "".join(random.sample(otp,39))
+        return finalOTP
+
+print(genYubiOTP())
